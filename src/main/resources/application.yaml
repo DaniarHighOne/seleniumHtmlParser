@@ -1,0 +1,20 @@
+лоалоspring:
+  application:
+    name: New-selemiun
+  threads.virtual.enabled: true
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    virtual-host: /
+    username: fetcher
+    password: fetcher
+    queue: seed-renderer-fetcher-q
+    exchange: seed-renderer-fetcher-x
+    routing-key: ${spring.rabbitmq.queue}
+    output-exchange: link-extractor-x
+    output-routing-key: link-extractor-q
+    listener:
+      simple:
+        prefetch: 1
+
+bot-farm.url: http://example.url
